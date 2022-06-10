@@ -1,0 +1,24 @@
+document.write("Hello world");
+var box;
+box = 100;
+document.write(box); 
+var s = "javascript";
+var num = 100;
+var tag="<h1> String</h1>";
+var s = true;
+var t = 10>=100;
+var a = Boolean("hello");
+var b = false;
+var c = 10 > 5;
+document.write(a,"<br>");
+document.write(b,"<br>");
+document.write(c, "<br>");
+//prompt("질문","기본응답");
+var name = prompt("당신의 이름은?","");
+var height = prompt("당신의 신장은?","0");
+var weight = prompt("당신의 체중은?","0");
+
+var normal_w = (height-100)*0.9;
+var result = weight >= normal_w -5 && weight <= normal_w +5;
+result= result? "적정체중입니다." : "적정체중이아닙니다";
+document.write(name + "님은" + result);
