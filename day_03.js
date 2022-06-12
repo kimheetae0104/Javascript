@@ -35,3 +35,67 @@ if(url) location.href = "http://" + url; //저장된 주소로 이동
         2. 자바스크립트 코드;
         증감식;
     }
+*/
+
+var i = 1;
+while(i <= 30){
+    if(i%2 == 0&& i %6==0){
+        document.write(i,"<br>");
+    }
+    i++;
+}
+
+var i = 20;
+while(i >= 10){
+    if(i % 2 == 0){
+        document.write("<p class = 'blue'>"+ i +"</p>"); // p class 로 개별적 css 가능
+    }else{
+        document.write("<p class = 'red'>"+ i + "</p>");
+    }
+    i--;
+}
+// do while 문
+/* var 변수 = 초깃값;
+    do{
+        자바스크립트 코드;
+        증감식;
+    }while(조건식)
+*/
+var i = 10;
+do{
+    document.write("hello");
+}while( i < 3)
+//for 문
+/* for(초깃값; 조건식; 증감식){
+    자바스크립트 코드;
+}
+*/
+for(var i = 1; i <=100; i++){
+    if(i % 5 == 0 && i % 7 != 0 ){
+        document.write("<p class ='red'>"+ i + "</p>");
+    }else if(i % 7 == 0 && i % 5 != 0){
+        document.write("<p class='green'>"+i+"</p>");
+    }else if(i % 7 ==0 && i % 5==0){
+        document.write("<p class='aqua'>"+i+"</p>");
+    }
+}
+// break 문 & continue문
+for(var i = 1; i <= 10; i++){
+    if(i == 6) break; // i 의 값이 6이면 break문으로 종료
+    document.write(i, "<br>");
+}
+document.write("====THE END====");
+
+for(var i = 1; i <= 10; i++){
+    if(i%2 == 0)continue
+    document.write(i,"<br>")
+}
+document.write("=====THE END=====");
+
+//중첩 for 문
+for(var i = 1; i <= 3; i++){
+    for(var k = 1; k <= 2; k++){
+        document.write(i + "행" + k + "열", "<br>");
+    }
+    document.write("<br>");
+}
