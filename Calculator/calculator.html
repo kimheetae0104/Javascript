@@ -9,11 +9,16 @@
     <script src="calculator.js" defer></script>
 </head>
 <body>
+    // 하나의 id는 한 문서에서 한 번만 사용이 가능합니다.
+    // 하나의 class는 한 문서에서 여러 번 사용이 가능합니다.
+    // id의 속성이 class의 속성보다 우선 순위가 높습니다.
+    // 따라서 id의 속성은 해당 요소에 부여된 class 속성에 관계 없이 작동합니다.
     <div class="calculator-grid">
         <div class="output">
             <div data-previous-operand class="previous-operand"></div>
             <div data-current-operand class="current-operand"></div>
         </div>
+        // buttton 별 이름 정해주기  data-?-? 
         <button data-all-clear class="span-two">AC</button>
         <button data-delete>DEL</button>
         <button data-operation>÷</button>
