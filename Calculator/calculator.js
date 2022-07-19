@@ -1,10 +1,11 @@
+// Calculator 라는 객체를 만들어 보자
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
       this.previousOperandTextElement = previousOperandTextElement
       this.currentOperandTextElement = currentOperandTextElement
       this.clear()
     }
-  
+
     clear() {
       this.currentOperand = ''
       this.previousOperand = ''
