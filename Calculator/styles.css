@@ -18,7 +18,7 @@
 
 
 // gird 기법 기본 구조를 이해하고 자주 써봐서 익숙해질 것 
-
+// vh 요소는 높이값의 100분의 1의 단위입니다. 
   .calculator-grid {
     display: grid;
     justify-content: center;
@@ -29,7 +29,7 @@
   }
 
 
-
+// > 자식 선택자 
   .calculator-grid > button {
     cursor: pointer;
     font-size: 2rem;
