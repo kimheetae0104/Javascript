@@ -7,6 +7,11 @@ let editId,
 isEditTask = false,
 todos = JSON.parse(localStorage.getItem("todo-list"));
 
+// var 는 function-scoped 로 인해 hoisting 되었다면 , let, const는 block-scoped 단위로 hoisting이 일어난다. 
+// const / let 차이 
+// let 은 변수에 재할당이 가능 , const는 변수 재선언, 재할당 모두 불가능하다 
+
+// JSON.parse() 메서드는 JSON 문자열의 구문을 분석하고, 그 결과에서 JavaScript 값이나 객체를 생성한다 
 filters.forEach(btn => {
     btn.addEventListener("click", () => {
         document.querySelector("span.active").classList.remove("active");
