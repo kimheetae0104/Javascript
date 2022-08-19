@@ -5,7 +5,8 @@ class Calculator {
       this.currentOperandTextElement = currentOperandTextElement
       this.clear()
     }
-
+    // this 함수 정리하기 
+    
     clear() {
       this.currentOperand = ''
       this.previousOperand = ''
