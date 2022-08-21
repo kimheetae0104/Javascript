@@ -56,6 +56,7 @@ console.log(myArr === mapMyArr); // false
 
 끝으로 만약 map메서드의 콜백 함수가 아무것도 리턴하지 않을 경우에는, 호출한 배열의 길이만큼의 undefined가 채워진 배열이 리턴된다.
 
+https://bigtop.tistory.com/57
 
 ### forEach() 메서드 
 forEach() 메서드는 배열에 활용이 가능한 메서드로, 파라미터로 주어진 함수를 배열 요소 각가에 대해 실행하는 메서드이다.
