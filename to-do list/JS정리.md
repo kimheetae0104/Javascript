@@ -16,7 +16,93 @@
 * unload – 링크를 클릭해서 다른 페이지로 이동하거나 브라우저 탭을 닫을 때 혹은 브라우저 창을 닫을 때 이벤트가 발생한다.
 * change – 폼 필드의 상태가 변경되었을 때 발생한다. 라디오 버튼을 클릭하거나 셀렉트 박스에서 값을 선택하는 경우를 예로 들수 있다.
     
- 
+### functions 함수 문법 
+
+* 함수선언 
+function functionName() {
+    console.log('Hello World!');
+};
+function은 함수 생성 , functionName은 함수의 이름, 해당함수의 성격을 요약 중괄호 내의 명령어는 함수를 불러왔을 때 실행
+
+* 함수 불러오기
+console.log(functionName()); // Output: Hello World!
+
+* Parameter(매개변수) , Argument(인자)
+어떤 함수는 매개변수를 갖고, 그 매개변수를 함수 실행에 사용하기도 한다.
+
+function calculateArea(widht, height) {
+    console.log(width * height);
+}
+
+함수를 정의하는 괄호 내의 (width, height)가 매개변수
+코드를 불러와 실행할 때는, 이 매개변수가 인자의 성격을 갖는다.
+보다 정확하게 '값으로서의 인자'의 성격을 갖는다.
+
+* Default Parmeter(기본값 매개변수)
+Default Parameter는 매개변수의 기본값을 미리 정해놓는 것이다.
+function greeting (name = 'stranger') {
+    console.log(`Hello, ${name}!`);
+}
+
+greeting('Jean') // Ouput : Hello, Jean!
+
+* 함수 표현
+const calculateArea = function(width * height) {
+    const area = width * height;
+    return area;
+}
+
+위의 함수와 마찬가지로 함수의 이름은 대게 생략된다. 대신 변수의 이름을 통해 대신 함수를 특징지을 수 있다.
+이처럼 이름이 없는 무명 함수라고 한다.
+이 함수를 불러올 때는 변수이름과 함수의 인자를 입력하면 된다.
+
+calculateArea(widht, height)
+
+* Arrow Function(화살표 함수)
+Arrow Function은 ES6의 기능 중 하나 , 간단한 기호로서 함수를 표현하기 때문에 함수를 선언할 때 function 을 안써도 됨
+
+const rectangleArea = (widht, height) => {
+ let area = width * height;
+ return area;
+};
+
+const squreNum = (num) => {
+ return num * num;
+};
+// 위의 함수를 아래와 같이 변경할 수 있다. (소괄호와 중괄호, return명령어가 없어짐)
+
+const squarNum = num => num * num;
+
+JavaScript syntax fatterns
+Callback Function
+콜백 함수를 검색하면 대게의 경우 '비동기 처리'에 대한 말이 함께 나타난다.
+콜백 함수가 비동기 처리를 위해서 사용되기 때문에 그렇다.
+
+콜백 함수는 다른 함수 안에서 인자로서 실행되는 함수이다.
+이 콜백 함수는 어떤 이벤트가 발생하는 특정한 시점에 실행된다.
+
+콜백은 함수 내에 매개변수로서 들어갈 수 있다.
+매개변수인 콜백은 함수 형태로 실행될 수 있다.
+
+// 콜백 함수가 되는 매개변수를 지정한다.
+function multifly(a, b, callback) {
+   var sum = a * b;
+   callback(sum)
+}
+위의 콜백 함수는 아래와 같이 이용될 수 있다.
+
+// mutifly 함수에 무명 함수를 인자로 전달한다.
+multifly(2, 3, function(result) {
+   console.log(result);
+});
+multifly 함수의 인자에 2, 3, 함수 result를 매개변수 값으로 입력했다.
+따라서 multifly 함수가 순서대로 진행되면서,
+sum = 2 * 3 = 6 을 계산하고,
+그 sum 값을 콜백함수로서 받고(호출하고),
+console.log(result)를 통해 화면에 출력한다.
+
+https://velog.io/@jeanbaek/JavaScript-%ED%95%A8%EC%88%98-%EB%AC%B8%EB%B2%95-%ED%8C%A8%ED%84%B4-%EC%A0%95%EB%A6%AC
+
 ###  var , const , let 차이 
 
 ### map() 메서드
