@@ -73,8 +73,9 @@ const squreNum = (num) => {
 
 const squarNum = num => num * num;
 
-JavaScript syntax fatterns
-Callback Function
+### JavaScript syntax fatterns
+
+* Callback Function
 콜백 함수를 검색하면 대게의 경우 '비동기 처리'에 대한 말이 함께 나타난다.
 콜백 함수가 비동기 처리를 위해서 사용되기 때문에 그렇다.
 
@@ -101,9 +102,25 @@ sum = 2 * 3 = 6 을 계산하고,
 그 sum 값을 콜백함수로서 받고(호출하고),
 console.log(result)를 통해 화면에 출력한다.
 
-https://velog.io/@jeanbaek/JavaScript-%ED%95%A8%EC%88%98-%EB%AC%B8%EB%B2%95-%ED%8C%A8%ED%84%B4-%EC%A0%95%EB%A6%AC
+참고 사이트 : https://velog.io/@jeanbaek/JavaScript-%ED%95%A8%EC%88%98-%EB%AC%B8%EB%B2%95-%ED%8C%A8%ED%84%B4-%EC%A0%95%EB%A6%AC
 
 ###  var , const , let 차이 
+var 키워드의 문제점은 크게 세 가지가 존재한다.
+
+변수 중복 선언 가능하여, 예기치 못한 값을 반환할 수 있다.
+함수 레벨 스코프로 인해 함수 외부에서 선언한 변수는 모두 전역 변수로 된다.
+변수 선언문 이전에 변수를 참조하면 언제나 undefined를 반환한다.
+(1) let
+
+let 키워드로는 변수 중복 선언이 불가하지만, 재할당은 가능하다.
+
+(2) const
+
+const가 let과 다른 점이 있다면, 반드시 선언과 초기화를 동시에 진행되어야 한다.
+
+const도 let과 마찬가지로 재선언이 불가하며, 더 나아가 재할당도 불가하다. 재할당의 경우, 원시 값은 불가능하지만, 객체는 가능하다. const 키워드는 재할당을 금지할 뿐, ‘불변’을 의미하지 않는다.
+
+참고 사이트 : https://www.howdy-mj.me/javascript/var-let-const/
 
 ### map() 메서드
 map() 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환하는 메서드이다.
@@ -142,7 +159,7 @@ console.log(myArr === mapMyArr); // false
 
 끝으로 만약 map메서드의 콜백 함수가 아무것도 리턴하지 않을 경우에는, 호출한 배열의 길이만큼의 undefined가 채워진 배열이 리턴된다.
 
-https://bigtop.tistory.com/57
+참고 사이트 : https://bigtop.tistory.com/57
 
 ### forEach() 메서드 
 forEach() 메서드는 배열에 활용이 가능한 메서드로, 파라미터로 주어진 함수를 배열 요소 각가에 대해 실행하는 메서드이다.
@@ -168,4 +185,4 @@ console.log(newMyArr); //undefined
 
 개인적으로는 return 값으로 새로운 배열이 필요하지 않는 경우라면 forEach 메서드를 활용하는 것이 옳다고 생각한다.
 
-https://bigtop.tistory.com/58
+참고 사이트 : https://bigtop.tistory.com/58
