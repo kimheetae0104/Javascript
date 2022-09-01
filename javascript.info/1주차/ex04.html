@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>세미콜론이 없을 때 오류 문제</p>
+    <script>
+        alert("Hello");
+
+        [1, 2].forEach(alert);
+
+        alert("Hello")
+
+        [1, 2].forEach(alert);
+    </script>
+    
+    <!--이 코드를 실행하면 첫 번째 코드만 Hello표시됩니다(오류가 있는 경우 이를 보려면 콘솔을 열어야 할 수 있음). 더 이상 숫자가 없습니다.
+
+    JavaScript는 대괄호 앞에 세미콜론을 가정하지 않기 때문 [...]입니다. 따라서 마지막 예제의 코드는 단일 명령문으로 처리됩니다.  
+  엔진이 보는 방법은 다음과 같습니다.
+
+alert("Hello")[1, 2].forEach(alert);
+
+이상해 보이죠? 이 경우 이러한 병합은 잘못된 것입니다. alert코드가 올바르게 작동하려면 뒤에 세미콜론을 넣어야 합니다.
+
+이것은 다른 상황에서도 발생할 수 있습니다.
+
+줄 바꿈으로 구분된 경우에도 문 사이에 세미콜론을 넣는 것이 좋습니다.
+이 규칙은 커뮤니티에서 널리 채택됩니다. 다시 한 번 유의하십시오 . 
+대부분의 경우 세미콜론을 생략 할 수 있습니다. 
+그러나 특히 초보자에게 사용하는 것이 더 안전합니다.
+
+-->
+</body>
+
+</html>
