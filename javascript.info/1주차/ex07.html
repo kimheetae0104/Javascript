@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 상호작용 : 경고(alert), 프롬프트(prompt), 확인(confirm) -->
+    <script>
+        //***알리다*** 
+        alert("Hello");
+        //메시지가 있는 미니 창을 모달 창이라고 한다. 
+        //*** 즉각적인 ***
+        result = prompt(title, [default ]);
+        //title = 방문자에게 표시할 텍스트 
+        //default = 선택적 두번째 매개변수, 입력 필드의 초기 값.
+        // 위의 구문에서 대괄호 default는 매개변수가 필수가 아닌 선택적임
+
+        let age = prompt('How old are you?', 100);
+        alert(`You are ${age} years old!`); // you are 100 year old!
+
+        // IE에서 : 항상 default 
+        // 두번째 매개변수는 선택사항이지만 제공하지 않으면 IE가 텍스트 "undefiend"를 프롬포트에 삽입합니다.
+
+        let test = prompt("Test");
+
+        let test = prompt("Test", '');
+        // 따라서 IE에서 프롬프트가 보기 좋게 표시되도록 하려면 항상 두번재 인수를 제공하는 것이 좋다
+
+        //***확인하다(confirm)***
+        result = confirm(question);
+        //이 기능은 확인 및 취소라는 두 개의 버튼 confirm이 있는 모달창을 표시
+        //결과는 확인을 누른 경우 true, 그렇지 않은 경우 false
+
+        let isBoss = confirm("Are you the Boss?");
+        alert(isBoss); // true is Ok is pressed 
+
+    </script>
+    <!-- 
+        alert
+        메시지를 보여줍니다.
+        prompt
+        사용자에게 텍스트를 입력하라는 메시지를 표시합니다. 텍스트를 반환하거나 취소 버튼을 클릭하거나 Esc를 클릭하면 null.
+        confirm
+        메시지를 표시하고 사용자가 "확인" 또는 "취소"를 누를 때까지 기다립니다. trueOK 및 falseCancel/ 에 대해 반환 됩니다 Esc.
+        이 모든 메서드는 모달입니다. 스크립트 실행을 일시 중지하고 창이 닫힐 때까지 방문자가 페이지의 나머지 부분과 상호 작용할 수 없도록 합니다.
+        
+        위의 모든 방법에는 두 가지 제한 사항이 있습니다.
+        
+        모달 창의 정확한 위치는 브라우저에 의해 결정됩니다. 일반적으로 중앙에 있습니다.
+        창의 정확한 모양은 브라우저에 따라 다릅니다. 수정할 수 없습니다.
+        그것이 바로 단순함의 대가입니다. 더 멋진 창을 표시하고 방문자와 더 풍부한 상호 작용을 표시하는 다른 방법이 있지만 "종소리"가별로 중요하지 않은 경우 이러한 방법이 잘 작동합니다. 
+        
+    -->
+</body>
+
+</html>
