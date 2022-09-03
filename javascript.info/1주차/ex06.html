@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 자바스크립트 8가지 기본 데이터 유형 -->
+    <script>
+        let message = "hello";
+        message = 123456;
+        alert(message);
+        // 변수가 문자열이 되었다가 숫자를 저장할 수 있는 것
+        // 이것을 "동적 유형" 이라고 한다. 즉 데이터 유형이 존재하지만 변수가 이들 중 어느 것에도 구속되지 않는다는 의미
+
+        //숫자
+        let n = 123;
+        n = 12.345;
+        alert(n);
+        // infinity & Nan 
+        alert(Infinity); // infinity
+        alert(NaN);// NaN
+        alert(NaN + 1); // NaN
+        alert(3 * NaN); // NaN
+        alert("not a number" / 2 - 1); // NaN
+
+        //BigInt
+        // 숫자 유형은 보다 크거나 음수보다 작은 정수 값을 나타낼 수 없다
+        //즉, 보다 큰 모든 홀수 정수는 숫자 유형에 전혀 저장 될 수 없다.
+
+        // 자바스크립트 문자열은 따옴표롤 묶어야한다.
+        let str = "Hello"; // 큰 따옴표
+        let str2 = 'Single quotes are ok too'; // 작은 따옴표
+        let pharse = `can embed antoher ${str}`; // 백틱 - 확장된 기능
+
+        let name = "John";
+
+        //embed a variable
+        alert( `Hello, ${name}!`); // Hello, John!
+
+        //embed an expression
+        alert( `the result is ${1 + 2}` ); // the result is 3
+
+        // 문자 유형이 없다. "char" 없이 string 으로 하나의 문자 또는 많은 문자로 구성
+        
+        //논리유형
+        let nameFieldChecked = true; // yes, name field is checked
+        let ageFieldChecked = false; //no, age field is not checked
+
+        let isGreater = 4 > 1;
+        alert( isGreater ); // true (the comparison result is "yes")
+
+        // *** "널" 값 ***
+
+        let age = null;
+        // 존재하지 않는 객체에 대한 참조 또는 일부 다른 언어에서처럼 널 포인터가 아니다
+        // 아무것도, 비어있음 또는 알 수 없는 값 을 나타내는 특별한 값 
+
+        // *** "정의되지 않은" 값 ***
+        let age;
+        alert(age); // show "undefined"
+        // undefined 기술적으로 변수에 명시적으로 할당하는 것이 가능
+
+        let age = 100;
+
+        // change the value to undefined
+        age = undefined;
+
+        alert(age); // "undefined"
+        // 기본 초기 값으로 예약 되어 있어서 굳이 이럴 필요가 없다
+
+        // **typeof 연산자 **
+        typeof "foo" // "string"
+        typeof Symbol("id") // "symbol"
+        typeof Math // "object" 내장객체
+        typeof null // "object" ???
+        typeof alert // "function" 함수
+
+        //typeof() or typeof 형식으로 사용
+
+    </script>
+    <!--  -->
+</body>
+
+</html>
