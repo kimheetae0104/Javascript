@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 비교 -->
+    <script>
+        alert(2 > 1); //true
+        alert(2 == 1); // false
+        alert(2 != 1); // true
+
+        let result = 5 > 4;
+        alert(result); // true
+
+        // 문자열 비교
+        alert('Z' > 'A'); // true
+        alert('Glow' > 'Glee'); // true
+        alert('Bee' > 'Be'); // true
+
+        // 두 문자열을 비교하는 알고리즘은 간단하다
+        // 1. 두 문자열의 첫 번째 문자를 비교
+        // 2. 첫 번째 문자열의 첫 번째 문자가 다른 문자열의 문자보다 크거나 작으면 첫 번째 문자열이 두 번째 문자열보다 크거나 작다.
+        // 3. 그렇지 않고 두 문자열의 첫 번째 문자가 같으면 두 번째 문자를 같은 방식으로 비교
+        // 4. 두 문자열 중 하나가 끝날 때까지 반복
+        // 5. 두 문자열이 같은 길이로 끝나면 동일 그렇지 않으면 더 긴 문자열이 더 큼
+
+        // * 실제 사전이 아니라 유니코드 순서
+        // A 보다 a 가 더 크다 => 내부 인코딩 테이블에서 더 큰 인덱스를 갖기 때문 
+
+        // 다른 유형의 비교
+        alert('2' > 1); // true, string '2' becomes a number 2
+        alert('01' == 1); // true, string '01' becomes a number 1
+
+        // 동시에 다음이 가능 - 이 부분은 조금 이해가 필요할듯 
+        let a = 0;
+        alert(Boolean(a)); // false
+
+        let b = "0";
+        alert(Boolean(b)); // true
+
+        alert(a == b); // true!
+        // JavaScript의 관점에서 이 결과는 매우 정상입니다.
+        // 같음 검사는 숫자 변환을 사용하여 값을 변환하고(따라서 "0"가 됨 0) 명시적 Boolean변환은 다른 규칙 집합을 사용합니다.
+
+        // 엄격한 평등 
+
+        alert(0 == false); // true
+
+        alert('' == false); // true
+
+        // 이것은 다른 유형의 피연산자가 등호 연산자에 의해 숫자로 변환되기 때문에 발생합니다 ==. 와 같은 빈 문자열 false은 0이 됩니다.
+
+        // 0와 구별 하려면 어떻게 해야 결과가 false가 나오나?
+
+        // 완전 항등 연산자 ===는 유형 변환 없이 항등을 확인한다는데... 
+
+        // 즉, a와 b가 다른 유형이면 변환을 시도하지 않고 a === b즉시 반환 됩니다.false
+
+        alert(0 === false); // false, because the types are different
+
+        // null 및 undefined 와의 비교 
+        alert(null === undefined); // false
+
+        // 이상한 결과...??? 
+        // null 과 0 을 비교 
+        alert(null > 0);  // (1) false
+        alert(null == 0); // (2) false
+        alert(null >= 0); // (3) true
+        // undefined 와 0을 비교 
+        alert(undefined > 0); // false (1)
+        alert(undefined < 0); // false (2)
+        alert(undefined == 0); // false (3)
+
+
+        // 비교 해보기 예제 
+        5 > 4
+        "apple" > "pineapple"
+        "2" > "12"
+        undefined == null
+        undefined === null
+        null == "\n0\n"
+        null === +"\n0\n"
+
+        //1. 분명히, 사실입니다.
+        //2. 사전 비교, 따라서 거짓입니다. "a"보다 작습니다 "p".
+        //3. 다시 말하지만, 사전 비교에서 첫 번째 char 는 첫 번째 char "2"보다 큽니다 "1".
+        //4. 가치 null와 undefined서로 평등합니다.
+        //5. 엄격한 평등은 엄격합니다. 양쪽의 다른 유형은 false로 이어집니다.
+        //6. (4)와 유사, null만 같음 undefined.
+        //7. 다른 유형의 엄격한 평등.
+
+    </script>
+
+</body>
+
+</html>
