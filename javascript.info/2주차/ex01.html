@@ -19,13 +19,14 @@ function showMessage() {
 
 showMessage();
 showMessage();
-호출 showMessage()은 함수의 코드를 실행합니다. 여기서 우리는 메시지를 두 번 보게 될 것입니다.
+
+호출 showMessage()은 함수의 코드를 실행합니다. 여기서 우리는 메시지를 두 번 호출
 
 이 예제는 코드 중복을 피하기 위한 함수의 주요 목적 중 하나를 명확하게 보여줍니다.
 
 메시지나 메시지가 표시되는 방식을 변경해야 하는 경우 한 곳에서 코드를 수정하는 것으로 충분합니다. 바로 이를 출력하는 함수입니다.
 
-지역 변수
+* 지역 변수
 함수 내에서 선언된 변수는 해당 함수 내에서만 볼 수 있습니다.
 
 예를 들어:
@@ -39,7 +40,9 @@ function showMessage() {
 showMessage(); // Hello, I'm JavaScript!
 
 alert( message ); // <-- Error! The variable is local to the function
-외부 변수
+
+                         
+* 외부 변수
 함수는 외부 변수에도 액세스할 수 있습니다. 예를 들면 다음과 같습니다.
 
 let userName = 'John';
@@ -68,9 +71,11 @@ alert( userName ); // John before the function call
 showMessage();
 
 alert( userName ); // Bob, the value was modified by the function
+
 외부 변수는 로컬 변수가 없는 경우에만 사용됩니다.
 
-동일한 이름의 변수가 함수 내부에서 선언 되면 외부 변수를 가 립니다 . 예를 들어 아래 코드에서 함수는 local 을 사용합니다 userName. 바깥 쪽은 무시됩니다.
+동일한 이름의 변수가 함수 내부에서 선언 되면 외부 변수를 덮어씀
+예를 들어 아래 코드에서 함수는 local 을 사용합니다 userName. 바깥 쪽은 무시됩니다.
 
 let userName = 'John';
 
@@ -85,17 +90,21 @@ function showMessage() {
 showMessage();
 
 alert( userName ); // John, unchanged, the function did not access the outer variable
+
 전역 변수
-userName위 코드 의 외부와 같이 함수 외부에서 선언된 변수를 전역 이라고 합니다.
+userName위 코드 의 외부와 같이 함수 외부에서 선언된 변수를 전역 이라고 한다.
 
 전역 변수는 모든 함수에서 볼 수 있습니다(로컬에 의해 가려지지 않는 한).
 
-전역 변수의 사용을 최소화하는 것이 좋습니다. 최신 코드에는 전역 변수가 거의 또는 전혀 없습니다. 대부분의 변수는 해당 기능에 있습니다. 그러나 때로는 프로젝트 수준 데이터를 저장하는 데 유용할 수 있습니다.
+   전역 변수의 사용을 최소화하는 것이 좋습니다. 
+   최신 코드에는 전역 변수가 거의 또는 전혀 없습니다. 
+   대부분의 변수는 해당 기능에 있습니다. 
+   때로는 프로젝트 수준 데이터를 저장하는 데 유용할 수 있습니다.
 
 매개변수
 매개변수를 사용하여 함수에 임의의 데이터를 전달할 수 있습니다.
 
-아래 예에서 함수에는 두 개의 매개변수가 from있습니다 text.
+아래 예에서 함수에는 두 개의 매개변수 from, text
 
 function showMessage(from, text) { // parameters: from, text
   alert(from + ': ' + text);
@@ -105,7 +114,8 @@ showMessage('Ann', 'Hello!'); // Ann: Hello! (*)
 showMessage('Ann', "What's up?"); // Ann: What's up? (**)
 함수가 행 (*)및 에서 호출 (**)되면 지정된 값이 로컬 변수 from및 에 복사됩니다 text. 그런 다음 함수에서 사용합니다.
 
-여기에 하나의 예가 더 있습니다. 변수가 from있고 이를 함수에 전달합니다. 참고: 함수 from는 변경되지만 함수는 항상 값의 복사본을 가져오기 때문에 변경 사항은 외부에서 볼 수 없습니다.
+여기에 하나의 예가 더 있습니다. 변수가 from있고 이를 함수에 전달합니다. 
+참고: 함수 from는 변경되지만 함수는 항상 값의 복사본을 가져오기 때문에 변경 사항은 외부에서 볼 수 없습니다.
 
 function showMessage(from, text) {
 
