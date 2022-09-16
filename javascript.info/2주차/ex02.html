@@ -1,1 +1,63 @@
+* 화살표 함수
+
 let func = (arg1, arg2, ..., argN) => expression;
+
+let func = function(arg1, arg2, ..., argN) {
+  return expression;
+};
+
+아래 식을 보면 화살표를 통해 return 표현을 단순하게 만들어준다.
+let sum = (a, b) => a + b;
+
+/* This arrow function is a shorter form of:
+
+let sum = function(a, b) {
+  return a + b;
+};
+*/
+
+alert( sum(1, 2) ); // 3
+
+let double = n => n * 2;
+// roughly the same as: let double = function(n) { return n * 2 }
+
+alert( double(3) ); // 6
+
+인수가 없는 경우 괄호는 그대로 있어야한다. 
+let sayHi = () => alert("Hello!");
+
+sayHi();
+
+인수가 없고 괄호만 있는 함수 추가 설명
+let age = prompt("What is your age?", 18);
+
+let welcome = (age < 18) ?
+  () => alert('Hello!') :
+  () => alert("Greetings!");
+
+welcome();
+  
+  
+좀 더 긴 화살표 함수 기능
+주요 차이점은 중괄호 return안에 값을 반환해야 한다는 것
+  let sum = (a, b) => {  // the curly brace opens a multiline function
+  let result = a + b;
+  return result; // if we use curly braces, then we need an explicit "return"
+};
+
+alert( sum(1, 2) ); // 3
+  
+ 
+ 
+ 화살표 함수로 아래 식을 다시 써보시오 
+  
+ function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
+
+ask(
+  "Do you agree?",
+  function() { alert("You agreed."); },
+  function() { alert("You canceled the execution."); }
+);
