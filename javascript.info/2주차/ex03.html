@@ -1,0 +1,458 @@
+* 개체
+
+* 객체 리터럴 
+
+자바스크립트 인포 에서는 빈 캐비닛을 연상하게 하여 우리가 객체를 이해하도록 한다.
+
+다음 두 구문 중 하나를 사용하여 빈 개체("빈 캐비닛")를 만들 수 있습니다.
+
+let user = new Object(); // "object constructor" syntax
+let user = {};  // "object literal" syntax
+
+일반적으로 괄호 {...}가 사용됩니다. 그 선언을 객체 리터럴 이라고 합니다 .
+
+* 리터럴 및 속성
+{...}일부 속성을 "키:값" 쌍 으로 즉시 넣을 수 있습니다 .
+
+let user = {     // an object
+  name: "John",  // by key "name" store value "John"
+  age: 30        // by key "age" store value 30
+};
+속성에는 콜론 앞에 키("이름" 또는 "식별자"라고도 함) ":"가 있고 오른쪽에 값이 있습니다.
+
+** 식별자를 검색해 원하는 값을 불러오는 개념으로 기억하기로는 jdbc 하면서 많이 어색했던 부분이었다
+왜냐하면 식별자를 정해야하는데 익숙치가 않았다. 
+
+
+user개체에는 두 가지 속성이 있습니다 .
+
+첫 번째 속성에는 이름 "name"과 값이 "John"있습니다.
+두 번째는 이름 "age"과 값이 30있습니다.
+결과 user개체는 "이름" 및 "연령" 레이블이 지정된 두 개의 서명된 파일이 있는 캐비닛으로 상상할 수 있습니다.
+
+언제든지 파일을 추가, 제거 및 읽을 수 있습니다.
+
+속성 값은 점 표기법을 사용하여 액세스할 수 있습니다.
+
+// get property values of the object:
+alert( user.name ); // John
+alert( user.age ); // 30
+값은 모든 유형이 될 수 있습니다. 부울 값을 추가해 보겠습니다.
+
+user.isAdmin = true;
+
+속성을 제거하려면 다음 delete연산자를 사용할 수 있습니다.
+
+delete user.age;
+
+** . 은 명령하게 만드는 부호라고 생각하면된다. 
+
+여러 단어로 된 속성 이름을 사용할 수도 있지만 따옴표로 묶어야 합니다.
+
+let user = {
+  name: "John",
+  age: 30,
+  "likes birds": true  // multiword property name must be quoted
+};
+
+목록의 마지막 속성은 쉼표로 끝날 수 있습니다.
+
+let user = {
+  name: "John",
+  age: 30,
+}
+이를 "후행" 또는 "행잉" 쉼표라고 합니다. 모든 라인이 비슷해지기 때문에 속성을 추가/제거/이동하기가 더 쉽습니다.
+
+대괄호
+다중 단어 속성의 경우 점 액세스가 작동하지 않습니다.
+
+// this would give a syntax error
+user.likes birds = true
+
+JavaScript는 그것을 이해하지 못합니다. 그것은 우리가 주소를 생각하고 user.likes예기치 않은 문제가 발생하면 구문 오류를 제공합니다 birds.
+
+점은 키가 유효한 변수 식별자여야 합니다. 이는 공백을 포함하지 않고 숫자로 시작하지 않으며 특수 문자를 포함하지 않음을 의미합니다( $허용됨 _).
+
+모든 문자열에서 작동하는 대체 "대괄호 표기법"이 있습니다.
+
+let user = {};
+
+// set
+user["likes birds"] = true;
+
+// get
+alert(user["likes birds"]); // true
+
+// delete
+delete user["likes birds"];
+이제 모든 것이 정상입니다. 대괄호 안의 문자열은 올바르게 인용되어 있음을 유의하십시오(모든 유형의 인용부호가 가능함).
+
+대괄호는 또한 다음과 같이 변수에서와 같이 리터럴 문자열과 달리 표현식의 결과로 속성 이름을 얻는 방법을 제공합니다.
+
+let key = "likes birds";
+
+// same as user["likes birds"] = true;
+user[key] = true;
+여기서 변수 key는 런타임에 계산되거나 사용자 입력에 따라 달라질 수 있습니다. 그런 다음 이를 사용하여 속성에 액세스합니다. 이는 우리에게 상당한 유연성을 제공합니다.
+
+예를 들어:
+
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = prompt("What do you want to know about the user?", "name");
+
+// access by variable
+alert( user[key] ); // John (if enter "name")
+점 표기법은 비슷한 방식으로 사용할 수 없습니다.
+
+let user = {
+  name: "John",
+  age: 30
+};
+
+let key = "name";
+alert( user.key ) // undefined
+계산된 속성
+객체를 생성할 때 객체 리터럴에서 대괄호를 사용할 수 있습니다. 이를 계산된 속성 이라고 합니다 .
+
+예를 들어:
+
+let fruit = prompt("Which fruit to buy?", "apple");
+
+let bag = {
+  [fruit]: 5, // the name of the property is taken from the variable fruit
+};
+
+alert( bag.apple ); // 5 if fruit="apple"
+계산된 속성의 의미는 간단 합니다. [fruit]속성 이름은 에서 가져와야 함을 의미합니다 fruit.
+
+따라서 방문자가 "apple"를 입력 bag하면 가 됩니다 {apple: 5}.
+
+기본적으로 다음과 동일하게 작동합니다.
+
+let fruit = prompt("Which fruit to buy?", "apple");
+let bag = {};
+
+// take property name from the fruit variable
+bag[fruit] = 5;
+...하지만 더 멋지게 보입니다.
+
+대괄호 안에 더 복잡한 표현식을 사용할 수 있습니다.
+
+let fruit = 'apple';
+let bag = {
+  [fruit + 'Computers']: 5 // bag.appleComputers = 5
+};
+대괄호는 점 표기법보다 훨씬 강력합니다. 모든 속성 이름과 변수를 허용합니다. 그러나 그들은 또한 쓰기가 더 복잡합니다.
+
+따라서 대부분의 경우 속성 이름이 알려지고 단순할 때 점이 사용됩니다. 더 복잡한 것이 필요하면 대괄호로 전환합니다.
+
+속성 값 약어
+실제 코드에서는 기존 변수를 속성 이름의 값으로 사용하는 경우가 많습니다.
+
+예를 들어:
+
+function makeUser(name, age) {
+  return {
+    name: name,
+    age: age,
+    // ...other properties
+  };
+}
+
+let user = makeUser("John", 30);
+alert(user.name); // John
+위의 예에서 속성은 변수와 이름이 같습니다. 변수에서 속성을 만드는 사용 사례는 너무 일반적이어서 속성 값 을 더 짧게 만드는 특수 속성 값 이 있습니다.
+
+대신 다음과 같이 name:name작성할 수 있습니다 name.
+
+function makeUser(name, age) {
+  return {
+    name, // same as name: name
+    age,  // same as age: age
+    // ...
+  };
+}
+동일한 객체에서 일반 속성과 약어를 모두 사용할 수 있습니다.
+
+let user = {
+  name,  // same as name:name
+  age: 30
+};
+속성 이름 제한
+우리가 이미 알고 있듯이 변수는 "for", "let", "return" 등과 같은 언어 예약어 중 하나와 같은 이름을 가질 수 없습니다.
+
+그러나 개체 속성의 경우 이러한 제한이 없습니다.
+
+// these properties are all right
+let obj = {
+  for: 1,
+  let: 2,
+  return: 3
+};
+
+alert( obj.for + obj.let + obj.return );  // 6
+간단히 말해서 속성 이름에는 제한이 없습니다. 모든 문자열이나 기호가 될 수 있습니다(나중에 다룰 식별자에 대한 특수 유형).
+
+다른 유형은 자동으로 문자열로 변환됩니다.
+
+예를 들어 숫자 는 속성 키로 사용될 때 0문자열 이 됩니다."0"
+
+let obj = {
+  0: "test" // same as "0": "test"
+};
+
+// both alerts access the same property (the number 0 is converted to string "0")
+alert( obj["0"] ); // test
+alert( obj[0] ); // test (same property)
+라는 특수 속성이 있는 사소한 문제가 있습니다 __proto__. 객체가 아닌 값으로 설정할 수 없습니다.
+
+let obj = {};
+obj.__proto__ = 5; // assign a number
+alert(obj.__proto__); // [object Object] - the value is an object, didn't work as intended
+코드에서 볼 수 있듯이 프리미티브에 대한 할당 5은 무시됩니다.
+
+다음 장__proto__ 에서 의 특별한 특성을 다루고 이러한 동작 을 수정하는 방법을 제안합니다 .
+
+속성 존재 테스트, "in" 연산자
+다른 많은 언어와 비교하여 JavaScript에서 개체의 주목할만한 기능은 모든 속성에 액세스할 수 있다는 것입니다. 속성이 존재하지 않으면 오류가 발생하지 않습니다!
+
+존재하지 않는 속성을 읽으면 undefined. 따라서 속성이 존재하는지 여부를 쉽게 테스트할 수 있습니다.
+
+let user = {};
+
+alert( user.noSuchProperty === undefined ); // true means "no such property"
+이를 위한 특수 연산자도 있습니다 "in".
+
+구문은 다음과 같습니다.
+
+"key" in object
+예를 들어:
+
+let user = { name: "John", age: 30 };
+
+alert( "age" in user ); // true, user.age exists
+alert( "blabla" in user ); // false, user.blabla doesn't exist
+의 왼쪽에 속성 이름in 이 있어야 합니다 . 일반적으로 따옴표로 묶인 문자열입니다.
+
+따옴표를 생략하면 변수에 테스트할 실제 이름이 포함되어야 함을 의미합니다. 예를 들어:
+
+let user = { age: 30 };
+
+let key = "age";
+alert( key in user ); // true, property "age" exists
+in연산자가 존재 하는 이유는 무엇 입니까? 비교하면 충분하지 undefined않습니까?
+
+글쎄, 대부분의 경우 비교가 undefined잘 작동합니다. "in"그러나 실패했지만 올바르게 작동 하는 특별한 경우가 있습니다 .
+
+객체 속성이 존재하지만 다음을 저장하는 경우입니다 undefined.
+
+let obj = {
+  test: undefined
+};
+
+alert( obj.test ); // it's undefined, so - no such property?
+
+alert( "test" in obj ); // true, the property does exist!
+위의 코드에서 속성은 obj.test기술적으로 존재합니다. 따라서 in운영자는 올바르게 작동합니다.
+
+이와 같은 상황은 undefined명시적으로 할당되어서는 안 되므로 매우 드물게 발생합니다. 우리는 주로 null"알 수 없는" 또는 "빈" 값에 사용합니다. 따라서 in오퍼레이터는 코드에서 이국적인 게스트입니다.
+
+"for..in" 루프
+객체의 모든 키를 탐색하기 위해 루프의 특별한 형태가 있습니다: for..in. 이것은 for(;;)우리가 이전에 연구한 구성과 완전히 다른 것입니다.
+
+구문:
+
+for (key in object) {
+  // executes the body for each key among object properties
+}
+예를 들어 다음의 모든 속성을 출력해 보겠습니다 user.
+
+let user = {
+  name: "John",
+  age: 30,
+  isAdmin: true
+};
+
+for (let key in user) {
+  // keys
+  alert( key );  // name, age, isAdmin
+  // values for the keys
+  alert( user[key] ); // John, 30, true
+}
+모든 "for" 구문을 사용하면 여기와 같이 루프 내부에서 루프 변수를 선언할 수 let key있습니다.
+
+또한 여기에 . 대신 다른 변수 이름을 사용할 수 있습니다 key. 예를 들어, "for (let prop in obj)"도 널리 사용됩니다.
+
+물건처럼 주문
+개체가 정렬되어 있습니까? 다시 말해, 객체를 반복하면 모든 속성이 추가된 것과 같은 순서로 표시됩니까? 우리는 이것에 의존할 수 있습니까?
+
+짧은 대답은 "특별한 방식으로 정렬됨"입니다. 정수 속성은 정렬되고 다른 속성은 생성 순서대로 나타납니다. 자세한 내용은 다음과 같습니다.
+
+예를 들어 전화 코드가 있는 객체를 생각해 보겠습니다.
+
+let codes = {
+  "49": "Germany",
+  "41": "Switzerland",
+  "44": "Great Britain",
+  // ..,
+  "1": "USA"
+};
+
+for (let code in codes) {
+  alert(code); // 1, 41, 44, 49
+}
+개체는 사용자에게 옵션 목록을 제안하는 데 사용될 수 있습니다. 우리가 주로 독일인 청중을 위한 사이트를 만들고 있다면 아마도 우리 49가 첫 번째 사이트가 되기를 원할 것입니다.
+
+그러나 코드를 실행하면 완전히 다른 그림을 볼 수 있습니다.
+
+미국 (1)이 먼저 간다
+그 다음 스위스(41) 등이 있습니다.
+전화 코드는 정수이므로 오름차순으로 정렬됩니다. 그래서 우리는 봅니다 1, 41, 44, 49.
+
+정수 속성? 그게 뭐야?
+여기서 "정수 속성"이라는 용어는 변경 없이 정수로 변환할 수 있는 문자열을 의미합니다.
+
+정수 속성 이름입니다. 정수 로 "49"변환하고 다시 정수로 변환해도 여전히 동일하기 때문입니다. 하지만 "+49"그렇지 "1.2"않습니다:
+
+// Number(...) explicitly converts to a number
+// Math.trunc is a built-in function that removes the decimal part
+alert( String(Math.trunc(Number("49"))) ); // "49", same, integer property
+alert( String(Math.trunc(Number("+49"))) ); // "49", not same "+49" ⇒ not integer property
+alert( String(Math.trunc(Number("1.2"))) ); // "1", not same "1.2" ⇒ not integer property
+… 반면에 키가 정수가 아닌 경우 생성 순서대로 나열됩니다. 예를 들면 다음과 같습니다.
+
+let user = {
+  name: "John",
+  surname: "Smith"
+};
+user.age = 25; // add one more
+
+// non-integer properties are listed in the creation order
+for (let prop in user) {
+  alert( prop ); // name, surname, age
+}
+따라서 전화 코드 문제를 해결하기 위해 코드를 정수가 아닌 것으로 만들어 "속임수"할 수 있습니다. 각 코드 앞에 더하기 "+"기호를 추가하면 충분합니다.
+
+이와 같이:
+
+let codes = {
+  "+49": "Germany",
+  "+41": "Switzerland",
+  "+44": "Great Britain",
+  // ..,
+  "+1": "USA"
+};
+
+for (let code in codes) {
+  alert( +code ); // 49, 41, 44, 1
+}
+이제 의도한 대로 작동합니다.
+
+요약
+객체는 몇 가지 특수 기능이 있는 연관 배열입니다.
+
+다음과 같은 속성(키-값 쌍)을 저장합니다.
+
+속성 키는 문자열 또는 기호(일반적으로 문자열)여야 합니다.
+값은 모든 유형이 될 수 있습니다.
+속성에 액세스하려면 다음을 사용할 수 있습니다.
+
+점 표기법: obj.property.
+대괄호 표기법 obj["property"]. 대괄호를 사용하면 와 같은 변수에서 키를 가져올 수 obj[varWithKey]있습니다.
+추가 연산자:
+
+속성을 삭제하려면: delete obj.prop.
+주어진 키를 가진 속성이 존재하는지 확인하려면: "key" in obj.
+객체를 반복하려면: for (let key in obj)루프.
+이 장에서 우리가 공부한 것은 "평범한 대상" 또는 그냥 Object.
+
+JavaScript에는 다른 많은 종류의 객체가 있습니다.
+
+Array정렬된 데이터 컬렉션을 저장하기 위해
+Date날짜와 시간에 대한 정보를 저장하기 위해,
+Error오류에 대한 정보를 저장합니다.
+…등등.
+그것들은 우리가 나중에 공부할 그들의 특별한 기능을 가지고 있습니다. 때때로 사람들은 "배열 유형" 또는 "날짜 유형"과 같은 것을 말하지만 공식적으로는 고유한 유형이 아니라 단일 "객체" 데이터 유형에 속합니다. 그리고 다양한 방식으로 확장합니다.
+
+JavaScript의 객체는 매우 강력합니다. 여기에서 우리는 정말 거대한 주제의 표면을 긁었습니다. 우리는 객체에 대해 긴밀하게 작업하고 튜토리얼의 다음 부분에서 객체에 대해 더 배울 것입니다.
+
+** 결론은 키 : 값 에대한 설명을 하는 것 같다 
+이 부분은 배열에서도 나오는 내용이기 때문에 객체를 생성하고 객체의 값을 지정해주는 것을 통해 
+보다 쉽게 원하는 데이터를 정리하고 가져올 수 있다는 것을 알면 될 것 같다
+이론적으로는 아는데 사실 막상 코드를 혼자 짜려고하면 많이 실수하는 부분인 것 같다
+
+연습문제
+
+안녕하세요, 개체입니다.
+중요도: 5
+각 작업에 대해 한 줄씩 코드를 작성합니다.
+
+빈 개체를 만듭니다 user.
+name값이 있는 속성을 추가합니다 John.
+surname값이 있는 속성을 추가합니다 Smith.
+의 값을 로 변경 name합니다 Pete.
+name개체에서 속성을 제거 합니다.
+해결책
+비어 있는지 확인
+중요도: 5
+객체에 속성이 없으면 isEmpty(obj)반환 하는 함수를 작성하고 그렇지 않으면 반환합니다.truefalse
+
+다음과 같이 작동해야 합니다.
+
+let schedule = {};
+
+alert( isEmpty(schedule) ); // true
+
+schedule["8:30"] = "get up";
+
+alert( isEmpty(schedule) ); // false
+테스트로 샌드박스를 엽니다.
+
+해결책
+합계 개체 속성
+중요도: 5
+우리 팀의 급여를 저장하는 객체가 있습니다.
+
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130
+}
+모든 급여를 합산하고 변수에 저장하는 코드를 작성하십시오 sum. 390위의 예에 있어야 합니다 .
+
+salaries가 비어 있으면 결과는 이어야 합니다 0.
+
+해결책
+숫자 속성 값에 2 곱하기
+중요도: 3
+multiplyNumeric(obj)의 모든 숫자 속성 값을 곱하는 obj함수 를 만듭니다 2.
+
+예를 들어:
+
+// before the call
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu"
+};
+
+multiplyNumeric(menu);
+
+// after the call
+menu = {
+  width: 400,
+  height: 600,
+  title: "My menu"
+};
+
+multiplyNumeric아무것도 반환할 필요가 없음을 유의하십시오 . 개체를 제자리에서 수정해야 합니다.
+
+PS typeof여기에서 번호를 확인하는 데 사용합니다.
+
+테스트로 샌드박스를 엽니다.
+
+https://javascript.info/object
