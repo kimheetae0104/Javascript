@@ -1,1 +1,235 @@
+개체 참조 및 복사
+객체와 기본 객체의 근본적인 차이점 중 하나는 객체가 "참조에 의해" 저장되고 복사되는 반면, 문자열, 숫자, 부울 등의 기본 값은 항상 "전체 값으로" 복사된다는 것입니다.
 
+값을 복사할 때 어떤 일이 발생하는지 살짝 들여다보면 이해하기 쉽습니다.
+
+문자열과 같은 기본 요소부터 시작하겠습니다.
+
+여기에 의 복사본을 message넣습니다 phrase.
+
+let message = "Hello!";
+let phrase = message;
+결과적으로 두 개의 독립 변수가 있으며 각각은 string 을 저장합니다 "Hello!".
+
+// 이부분은 즉 message 에 저장된 값을 phrase에 저장한다는 의미
+
+아주 당연한 결과죠?
+
+
+객체에 할당된 변수는 객체 자체가 아니라 "메모리의 주소", 즉 "참조"를 저장합니다.
+
+이러한 변수의 예를 살펴보겠습니다.
+
+let user = {
+  name: "John"
+};
+
+예를 들어:
+
+let user = { name: "John" };
+
+let admin = user; // copy the reference
+
+이제 각각 동일한 객체에 대한 참조를 저장하는 두 개의 변수가 있습니다.
+
+
+보시다시피 여전히 하나의 객체가 있지만 이제 이를 참조하는 두 개의 변수가 있습니다.
+
+두 변수 중 하나를 사용하여 개체에 액세스하고 내용을 수정할 수 있습니다.
+
+let user = { name: 'John' };
+
+let admin = user;
+
+admin.name = 'Pete'; // changed by the "admin" reference
+
+alert(user.name); // 'Pete', changes are seen from the "user" reference
+마치 두 개의 키가 있는 캐비닛이 있고 그 중 하나( admin)를 사용하여 캐비닛에 들어가서 변경하는 것과 같습니다. 
+그런 다음 나중에 다른 키( user)를 사용하면 여전히 동일한 캐비닛을 열고 변경된 내용에 액세스할 수 있습니다.
+
+참조에 의한 비교
+두 객체는 ​​동일한 객체일 때만 동일합니다.
+
+예를 들어, here a및 b참조는 동일한 객체이므로 동일합니다.
+
+let a = {};
+let b = a; // copy the reference
+
+alert( a == b ); // true, both variables reference the same object
+alert( a === b ); // true
+그리고 여기에서 두 개의 독립 객체는 비슷해 보이지만 동일하지 않습니다(둘 다 비어 있음).
+
+let a = {};
+let b = {}; // two independent objects
+
+alert( a == b ); // false
+프리미티브 와 같은 비교 obj1 > obj2또는 비교를 위해 obj == 5객체는 프리미티브로 변환됩니다. 
+우리는 객체 변환이 어떻게 작동하는지 곧 연구할 것이지만 사실을 말하자면 그러한 비교는 매우 드물게 필요합니다. 일반적으로 프로그래밍 실수의 결과로 나타납니다.
+
+* Const 개체를 수정할 수 있습니다.
+
+예를 들어:
+
+const user = {
+  name: "John"
+};
+
+user.name = "Pete"; // (*)
+
+alert(user.name); // Pete
+행이 오류를 일으키는 것처럼 보일 수 (*)있지만 그렇지 않습니다. 의 값 user은 일정하며 항상 동일한 개체를 참조해야 하지만 해당 개체의 속성은 자유롭게 변경할 수 있습니다.
+
+즉, 전체 const user로 설정하려고 하는 경우에만 오류가 발생합니다 user=....
+
+즉, 상수 객체 속성을 실제로 만들어야 하는 경우에도 가능하지만 완전히 다른 방법을 사용합니다. Property flags and descriptors 장에서 언급할 것입니다 .
+
+복제 및 병합, Object.assign
+따라서 개체 변수를 복사하면 동일한 개체에 대한 참조가 하나 더 생성됩니다.
+
+그러나 객체를 복제해야 하는 경우에는 어떻게 해야 합니까?
+
+새 객체를 만들고 속성을 반복하고 기본 수준에서 복사하여 기존 객체의 구조를 복제할 수 있습니다.
+
+이와 같이:
+
+let user = {
+  name: "John",
+  age: 30
+};
+
+let clone = {}; // the new empty object
+
+// let's copy all user properties into it
+for (let key in user) {
+  clone[key] = user[key];
+}
+
+// now clone is a fully independent object with the same content
+clone.name = "Pete"; // changed the data in it
+
+alert( user.name ); // still John in the original object
+Object.assign 메서드를 사용할 수도 있습니다 .
+
+구문은 다음과 같습니다.
+
+* Object.assign(dest, src1[, src2, src3...])
+첫 번째 인수 dest는 대상 개체입니다.
+추가 인수 src1, ..., srcN(필요한 만큼 많을 수 있음)는 소스 개체입니다.
+src1, ..., srcN모든 소스 개체의 속성을 대상 에 복사합니다 dest. 즉, 두 번째부터 시작하는 모든 인수의 속성이 첫 번째 객체에 복사됩니다.
+호출이 반환 dest됩니다.
+예를 들어 여러 개체를 하나로 병합하는 데 사용할 수 있습니다.
+
+let user = { name: "John" };
+
+let permissions1 = { canView: true };
+let permissions2 = { canEdit: true };
+
+// copies all properties from permissions1 and permissions2 into user
+Object.assign(user, permissions1, permissions2);
+
+// now user = { name: "John", canView: true, canEdit: true }
+복사한 속성 이름이 이미 있는 경우 덮어씁니다.
+
+let user = { name: "John" };
+
+Object.assign(user, { name: "Pete" });
+
+alert(user.name); // now user = { name: "Pete" }
+간단한 복제를 위해 루프 Object.assign를 교체 하는 데 사용할 수도 있습니다 .for..in
+
+let user = {
+  name: "John",
+  age: 30
+};
+
+let clone = Object.assign({}, user);
+의 모든 속성을 빈 개체에 복사 user하고 반환합니다.
+
+개체를 복제하는 다른 방법도 있습니다. 예를 들어 이 자습서의 뒷부분에서 다룰 스프레드 구문 을 사용합니다. clone = {...user}
+
+중첩 복제
+지금까지는 의 모든 속성 user이 원시적이라고 가정했습니다. 그러나 속성은 다른 개체에 대한 참조가 될 수 있습니다.
+
+이와 같이:
+
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+
+alert( user.sizes.height ); // 182
+이제 복사하는 것만으로는 충분하지 않습니다 clone.sizes = user.sizes. 왜냐하면 은 객체 이고 user.sizes참조에 의해 복사되므로 은 동일한 크기를 공유할 것이기 때문입니다.cloneuser
+
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+
+let clone = Object.assign({}, user);
+
+alert( user.sizes === clone.sizes ); // true, same object
+
+// user and clone share sizes
+user.sizes.width = 60;    // change a property from one place
+alert(clone.sizes.width); // 60, get the result from the other one
+이를 수정하고 객체를 만들고 user실제로 clone분리하려면 의 각 값을 검사하고 객체인 경우 구조도 복제하는 복제 루프를 사용해야 합니다 user[key]. 이를 "딥 클로닝" 또는 "구조화된 클로닝"이라고 합니다. 딥 클로닝을 구현하는 StructuredClone 메소드 가 있습니다 .
+
+구조화된 클론
+호출 은 모든 중첩 속성과 함께 를 structuredClone(object)복제합니다 .object
+
+다음은 예제에서 사용하는 방법입니다.
+
+let user = {
+  name: "John",
+  sizes: {
+    height: 182,
+    width: 50
+  }
+};
+
+let clone = structuredClone(user);
+
+alert( user.sizes === clone.sizes ); // false, different objects
+
+// user and clone are totally unrelated now
+user.sizes.width = 60;    // change a property from one place
+alert(clone.sizes.width); // 50, not related
+이 structuredClone메서드는 개체, 배열, 기본 값과 같은 대부분의 데이터 형식을 복제할 수 있습니다.
+
+또한 개체 속성이 개체 자체를 참조하는 경우(직접 또는 체인 또는 참조를 통해) 순환 참조를 지원합니다.
+
+예를 들어:
+
+let user = {};
+// let's create a circular reference:
+// user.me references the user itself
+user.me = user;
+
+let clone = structuredClone(user);
+alert(clone.me === clone); // true
+보시다시피 clone.me참조가 clone아니라 user! 따라서 순환 참조도 올바르게 복제되었습니다.
+
+structuredClone그러나 실패 하는 경우 가 있습니다.
+
+예를 들어, 객체에 함수 속성이 있는 경우:
+
+// error
+structuredClone({
+  f: function() {}
+});
+함수 속성은 지원되지 않습니다.
+
+이러한 복잡한 경우를 처리하려면 복제 방법의 조합을 사용하거나 사용자 정의 코드를 작성해야 할 수 있습니다. 또는 바퀴를 재발명하지 않으려면 기존 구현(예 : JavaScript 라이브러리 lodash 의 _.cloneDeep(obj) ) 을 사용해야 합니다.
+
+요약
+개체는 참조로 할당 및 복사됩니다. 즉, 변수는 "객체 값"이 아니라 값에 대한 "참조"(메모리의 주소)를 저장합니다. 따라서 이러한 변수를 복사하거나 함수 인수로 전달하면 개체 자체가 아니라 해당 참조가 복사됩니다.
+
+복사된 참조를 통한 모든 작업(예: 속성 추가/제거)은 동일한 단일 개체에서 수행됩니다.
+
+"실제 복사본"(복제)을 만들기 위해 Object.assign소위 "얕은 복사본"(중첩된 개체는 참조로 복사됨) 또는 "깊은 복제" 기능 에 사용하거나 _.cloneDeepstructuredClone 와 같은 사용자 지정 복제 구현을 사용할 수 있습니다.
