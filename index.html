@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기</title>
+</head>
+<body>
+    <div><span id="order">1</span>첫번째 참가자</div>
+    <div>제시어: <span id="word"></span></div>
+    <input type="text">
+    <button>입력</button>
+    <button class="btn">입력</button>
+    <button class="btn">입력</button>
+    <script>
+       const number = parseInt(prompt('몇 명이 참가하나요?'),10);
+       alert(number);
+       //사용자로부터 예 아니요를 받음
+       const yesOrNO = confirm('맞나요?');
+       document.querySelector('.btn');
+       
+       document.querySelector('input').addEventListener('input', function(event){
+        console.log('한글입력', event.target.value);
+
+       });
+       document.querySelector('button').addEventListener('click', function(){
+        console.log('click');
+       });
+       // =>
+       const onClick = () =>  {
+        console.log('버튼클릭');
+        return undefined;
+       }
+
+    </script>
+</body>
+</html>
